@@ -334,8 +334,8 @@ export  function ipcHandle() {
 
 最终效果图
 
-本文代码git地址
+本文代码git地址,注意是2.mainWithRender分支
 
 ```
-
+https://github.com/Licht-club/react-electron/tree/2.mainWithRender
 ```
