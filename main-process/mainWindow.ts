@@ -22,3 +22,7 @@ export function create() {
     }
     return win
 }
+
+export function send(channel:string,...args:any[]){
+    win.webContents.send(channel,...args)
+}
