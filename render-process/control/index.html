@@ -6,10 +6,17 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        *{margin:0;padding:0}
+        #screen-video{
+            height: 100%;
+            width: 100%;
+            object-fit: fill;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        正在受到控制
-    </div>
+    <h2><video id="screen-video"></video>控制台</h2>
+    <script src="./controled.js"></script>
 </body>
 </html>
