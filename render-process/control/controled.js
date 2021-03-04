@@ -1,10 +1,11 @@
 const {desktopCapturer, ipcRenderer} = require('electron')
 const EventEmitter = require('events')
-const video = document.getElementById('screen-video');
+
 const peer = new EventEmitter()
 
 
-function play(stream) {
+function handleStream(stream) {
+  const video = document.getElementById('screen-video');
   video.srcObject = stream;
   video.onloadedmetadata = () => video.play()
 }
@@ -12,7 +13,6 @@ function play(stream) {
 function getScreenStream() {//获取屏幕的信息
   return new Promise((_resolve, _reject) => {//对视频音频进行约束条件
     desktopCapturer.getSources({types: ['window', 'screen']}).then(async sources => {
-      console.log(sources)//获取的对象如图所示在下面
       for (const source of sources) {
         try {
           // 获取媒体流  stream: MediaStream
@@ -27,7 +27,7 @@ function getScreenStream() {//获取屏幕的信息
               }
             }
           })
-          play(stream)
+          handleStream(stream)
         } catch (reject) {
           console.error(reject)
         }

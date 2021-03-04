@@ -6,8 +6,8 @@ import { robotHandle } from './robot'
 app.on('ready', () => {
     process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'; // 关闭web安全警告
     ipc()
-    // create()
+    create()
 
-    createControlWindow()
+    // createControlWindow()
     robotHandle()
 })
