@@ -24,6 +24,9 @@ npm install electron-rebuild --save-dev
 
 npx electron-rebuild
 ```
-npm config set msvs_version 2017
+npm config set msvs_version 2019
 
 https://github.com/nodejs/node-gyp#on-windows
+
+vkey
+https://github.com/chrisdickinson/vkey 

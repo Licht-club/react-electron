@@ -9,8 +9,11 @@ export function createControlWindow() {
         width:300,
         height:300,
         webPreferences:{
-            nodeIntegration:true
+
+            nodeIntegration:true,
+            enableRemoteModule: true,   // 是否启用remote模块默认false
         }
     })
+    win.webContents.openDevTools() //打开控制台
     win.loadFile(resolve(__dirname,'../render-process/control/index.html'))
 }
