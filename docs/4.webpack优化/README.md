@@ -1,10 +1,15 @@
 ## webpack性能优化
 
+
+
 1. 如何进行性能数据分析
 2. 编译时间的优化
 3. 编译体积的优化
 4. 如何运行的更快
 
+
+
+[本文起步工程](https://github.com/Licht-club/react-electron/tree/2.mainWithRender) ,承接上一篇文章 [electron主线程和渲染线程的交互总结](https://juejin.cn/post/6932402715779661838)
 
 ## 如何进行性能数据分析
 
@@ -464,7 +469,9 @@ webpack5内置了模块缓存,不需要再使用这个插件 [issues6527](https:
 ## 编译体积的优化
 
 [optimize-css-assets-webpack-plugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin): 优化和压缩css
+
 [terser-webpack-plugin](https://www.npmjs.com/package/terser-webpack-plugin): 优化和压缩js
+
 [image-webpack-loader](https://www.npmjs.com/package/image-webpack-loader): 图片压缩和优化
 
 安装
