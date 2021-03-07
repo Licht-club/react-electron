@@ -1,10 +1,20 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState,Suspense} from 'react'
 import ReactDom from 'react-dom'
 import {ipcRenderer, IpcRendererEvent} from 'electron'
+import moment from 'moment'
+// import 'moment/locale/zh-cn'
+import 'bootstrap'
+
+console.log(moment)
+
+const MyLazy = React.lazy(()=>import('./MyLazy'))
+
 const App = () => {
     const [localCode,setLocalCode]=useState('');//本身的控制码
     const [remoteCode,setRemoteCode]=useState('');//其他用户的控制码
     const [controlText,setControlText]=useState('');//控制码的文案
+
+
 
     const handleControlState = (e:IpcRendererEvent,name:string,type:number)=>{
         let text='';
@@ -36,6 +46,9 @@ const App = () => {
         ipcRenderer.send('control',remoteCode)
     }
     return <div>
+            <Suspense fallback={<div>loading</div>}>
+                <MyLazy />
+            </Suspense>
         <div>hello react</div>
         {localCode? <div>
             本身的控制码:  {localCode}
