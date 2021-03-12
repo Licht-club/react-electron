@@ -18,7 +18,8 @@ module.exports = merge(common, {
         },
     },
     plugins: [
-        htmlWebpackPlugin(mode),
+        htmlWebpackPlugin(mode,'main'),
+        htmlWebpackPlugin(mode,'control'),
         new webpack.HotModuleReplacementPlugin()
     ],
 })

@@ -11,11 +11,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurgeCssWebpackPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob')
 
+const isProduction = process.env.NODE_ENV == 'production'
 
 module.exports = {
     entry: {
         // 默认是main
-        main: './render-process/main/index'
+        main: './render-process/main/index',
+        control:'./render-process/control/index'
     },
     // 上下文目录,根目录 https://webpack.docschina.org/configuration/entry-context/#context
     context: process.cwd(),
@@ -48,8 +50,8 @@ module.exports = {
                         test: /\.css$/,
                         use: [
                             // 'cache-loader',
-                            // 'style-loader',
-                            MiniCssExtractPlugin.loader,
+                            // ,
+                            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
                             'css-loader'
                         ]
                     }
@@ -71,21 +73,18 @@ module.exports = {
                 })
             }
         }),
-
         // https://www.npmjs.com/package/webpack-bundle-analyzer
         new BundleAnalyzerPlugin({
             analyzerMode: 'disable', // 不启动展示打包报告的web服务器
             generateStatsFile: true, // 生成报告文件
         }),
         // https://webpack.docschina.org/plugins/ignore-plugin/
-        new webpack.IgnorePlugin({
-            resourceRegExp: /^\.\/locale$/,
-            contextRegExp: /moment$/,
-        }),
+        // new webpack.IgnorePlugin({
+        //     resourceRegExp: /^\.\/locale$/,
+        //     contextRegExp: /moment$/,
+        // }),
         new MiniCssExtractPlugin(
-            {
-                filename: '[name].css',
-            }
+            {filename: '[name].[hash:6].css',}
         ),
         new PurgeCssWebpackPlugin(
             {

@@ -15,10 +15,10 @@ export function create() {
     })
     if (isDev) {
         win.webContents.openDevTools() //打开控制台
-        win.loadURL('http://localhost:8080')
+        win.loadURL('http://localhost:8080/main.html')
     } else {
         // 线上模式, 用react打包的
-        win.loadFile(resolve(__dirname, '../render-process/dist-main/index.html'))
+        win.loadFile(resolve(__dirname, '../render-process/dist-main/main.html'))
     }
     return win
 }
