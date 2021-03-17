@@ -11,8 +11,10 @@ export function create() {
         webPreferences: {               // 网页功能设置
             nodeIntegration: true,      // 是否在node工作器中启用工作集成默认false
             enableRemoteModule: true,   // 是否启用remote模块默认false
+
         }
     })
+
     if (isDev) {
         win.webContents.openDevTools() //打开控制台
         win.loadURL('http://localhost:8080/main.html')

@@ -4,8 +4,8 @@ import isDev from "electron-is-dev";
 let win;
 export function createControlWindow() {
     win=new BrowserWindow({
-        width:300,
-        height:300,
+        width:800,
+        height:600,
         webPreferences:{
             nodeIntegration:true
         }

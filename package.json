@@ -2,8 +2,9 @@
   "name": "react-electron",
   "version": "1.0.0",
   "description": "My Electron app",
-  "main": "dist/index.js",
+  "main": "dist/main-process/index.js",
   "scripts": {
+    "start:dev": "concurrently -k -p \"[{name}]\" -n \"React,TypeScript,Electron\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run start:react\" \"npm run dev:main\" \" wait-on http://localhost:8080/main.html && npm run start:electron\"",
     "start:react": "cross-env NODE_ENV=development webpack serve --config render-process/config/webpack.dev.js",
     "build:react": "cross-env NODE_ENV=production webpack  --config render-process/config/webpack.prod.js",
     "build:reactWithProgress": "cross-env NODE_ENV=production webpack --progress  --config render-process/config/webpack.prod.js",
@@ -54,12 +55,16 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/react-router-dom": "^5.1.7",
+    "concurrently": "^6.0.0",
     "electron-is-dev": "^1.2.0",
+    "electron-rebuild": "^2.3.5",
     "electron-squirrel-startup": "^1.0.0",
     "node-notifier": "^9.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "robotjs": "^0.6.0",
+    "wait-on": "^5.2.1"
   },
   "config": {
     "forge": {
